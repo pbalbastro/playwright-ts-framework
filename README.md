@@ -1,6 +1,6 @@
 # Playwright TS Framework
 
-A TypeScript end-to-end test framework built on [Playwright Test](https://playwright.dev/), using the Page Object Model. Currently targets [saucedemo.com](https://www.saucedemo.com) as the application under test.
+A TypeScript end-to-end test framework built on [Playwright](https://playwright.dev/), using the Page Object Model. Currently targets [saucedemo.com](https://www.saucedemo.com) as the application under test.
 
 ## Project structure
 
