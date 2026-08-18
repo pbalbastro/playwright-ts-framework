@@ -20,7 +20,7 @@ test('should login with valid credentials', { tag: '@smoke'}, async ({ page }) =
 
 test('should login', { tag: '@smoke' }, async ({ page }) => {
   const loginPage = new LoginPage(page);
-  await loginPage.goToUrl('/');
+  await loginPage.open();
   await loginPage.login(UserRole.Standard);
 
   await expect(page).toHaveURL(/.*inventory.html/);

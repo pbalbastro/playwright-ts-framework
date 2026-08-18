@@ -18,6 +18,11 @@ export class LoginPage {
         await this.page.goto(url);
     }
 
+    async open() {
+        await this.page.goto('/');
+    }
+
+
     async setUsernameInput(username: string) {
         await this.usernameInput.fill(username);
     }
