@@ -6,7 +6,7 @@ import { UserRole } from '../constants/user-roles';
 test('should login with valid credentials', { tag: '@smoke'}, async ({ page }) => {
   const loginPage = new LoginPage(page);
 
-  await loginPage.goToUrl('/');
+  await loginPage.open();
 
   const standardUser = users.find(u => u.role === 'standard_user')!;
 
@@ -18,7 +18,7 @@ test('should login with valid credentials', { tag: '@smoke'}, async ({ page }) =
   await expect(page).toHaveURL(/.*inventory.html/);
 });
 
-test('should login', { tag: '@smoke' }, async ({ page }) => {
+test('should login', async ({ page }) => {
   const loginPage = new LoginPage(page);
   await loginPage.open();
   await loginPage.login(UserRole.Standard);

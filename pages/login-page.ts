@@ -14,14 +14,10 @@ export class LoginPage {
         this.loginButton = page.locator('[data-test="login-button"]');
     }
 
-    async goToUrl(url: string) {
-        await this.page.goto(url);
-    }
-
     async open() {
         await this.page.goto('/');
+        await this.page.waitForLoadState('networkidle');
     }
-
 
     async setUsernameInput(username: string) {
         await this.usernameInput.fill(username);
