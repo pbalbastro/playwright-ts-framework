@@ -1,10 +1,11 @@
-import { test, expect } from '@playwright/test';
-import { LoginPage } from '../pages/login-page';
+import { test, expect } from '../fixtures/page-fixtures';
 import users from '../test-data/users.json';
 import { UserRole } from '../constants/user-roles';
 
-test('should login with valid credentials', { tag: '@smoke'}, async ({ page }) => {
-  const loginPage = new LoginPage(page);
+test('should login with valid credentials', { tag: '@smoke'}, async ({
+   loginPage,
+   page
+  }) => {
 
   await loginPage.open();
 
@@ -18,8 +19,10 @@ test('should login with valid credentials', { tag: '@smoke'}, async ({ page }) =
   await expect(page).toHaveURL(/.*inventory.html/);
 });
 
-test('should login', async ({ page }) => {
-  const loginPage = new LoginPage(page);
+test('should login', async ({
+   loginPage,
+   page }) => {
+    
   await loginPage.open();
   await loginPage.login(UserRole.Standard);
 
