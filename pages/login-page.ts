@@ -1,5 +1,6 @@
 import { expect, type Locator, type Page } from '@playwright/test';
 import users from '../test-data/users.json';
+import { UserRole } from '../constants/user-roles';
 
 export class LoginPage {
     readonly page: Page;
@@ -9,14 +10,14 @@ export class LoginPage {
 
     constructor(page: Page) {
         this.page = page;
-        this.usernameInput = page.locator('[data-test="username"]');
-        this.passwordInput = page.locator('[data-test="password"]');
-        this.loginButton = page.locator('[data-test="login-button"]');
+        this.usernameInput = page.getByRole('textbox', { name: 'Username' });
+        this.passwordInput = page.getByRole('textbox', { name: 'Password' });
+        this.loginButton = page.getByRole('button', { name: 'Login' });
     }
 
     async open() {
         await this.page.goto('/');
-        await this.page.waitForLoadState('networkidle');
+        await expect(this.usernameInput).toBeVisible();
     }
 
     async setUsernameInput(username: string) {
@@ -31,7 +32,7 @@ export class LoginPage {
         await this.loginButton.click();
     }
 
-    async login(role: string) {
+    async loginAs(role: UserRole) {
         const user = users.find(u => u.role === role);
         if (!user) {
             throw new Error(`No user with role '${role}' found in users.json`);

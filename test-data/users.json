@@ -5,8 +5,8 @@
     "password": "secret_sauce"
   },
   {
-    "role": "user",
-    "username": "user1",
-    "password": "password2"
+    "role": "locked_out_user",
+    "username": "locked_out_user",
+    "password": "secret_sauce"
   }
 ]
